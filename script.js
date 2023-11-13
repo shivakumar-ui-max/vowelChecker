@@ -10,9 +10,8 @@ let count = 0;
 
 function vowelChecker() {
   let Text = text.value.toLowerCase();
-
   for (i = 0; i < Text.length; i++) {
-    let letter = Text.charAt(i);
+    let letter = Text[i];
     if (isVowel(letter)) {
       count++;
     }
@@ -37,16 +36,12 @@ let colorArray = [
   "#22092C",
   "#872341",
   "#A6CF98",
-  "#5272F2",
+  "#61A3BA",
   "#ED7D31",
-  "#072541",
+  "#F5E8C7",
 ];
 let maxRadius = 40;
 let minRadius = 2;
-window.addEventListener("mousemove", function (event) {
-  mouse.x = event.x;
-  mouse.y = event.x;
-});
 
 window.addEventListener("resize", function () {
   canvas.width = window.innerWidth;
@@ -68,7 +63,7 @@ class Circle {
     c.beginPath();
     c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
     c.fillStyle = this.color;
-    // c.stroke();
+    c.stroke();
     c.fill();
   };
   update = function () {
@@ -80,32 +75,19 @@ class Circle {
     }
     this.x += this.dx;
     this.y += this.dy;
-
-    if (
-      mouse.x - this.x < 50 &&
-      mouse.x - this.x > -50 &&
-      mouse.y - this.y < 50 &&
-      mouse.y - this.y > -50
-    ) {
-      if (this.radius < maxRadius) {
-        this.radius += 1;
-      }
-    } else if (this.radius > this.minRadius) {
-      this.radius -= 1;
-    }
-
     this.draw();
   };
 }
 
 let circleArray = [];
 function init() {
+  circleArray = [];
   for (let i = 0; i < 150; i++) {
     let x = Math.random() * window.innerWidth;
     let y = Math.random() * window.innerHeight;
     let dx = Math.random() - 0.5;
     let dy = Math.random() - 0.5;
-    let radius = Math.random() * 3 + 1;
+    let radius = Math.random() * 4 + 1;
     circleArray.push(new Circle(x, y, radius, dx, dy));
   }
 }

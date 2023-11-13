@@ -16,14 +16,14 @@
   
   .container {
     background-color: #ECE3CE;
+    box-shadow: 5px 5px 25px #3A4D39;
     padding: 1rem;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 5px 5px 25px #3A4D39;
-    ;
+    
   }
   
   .title {
